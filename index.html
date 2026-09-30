@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GingerMitra - Smart Ginger Farming</title>
+
+    <!-- Kannada + English Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+        <div class="brand-icon">🌱</div>
+
+        <div>
+            <h2>GingerMitra</h2>
+            <span>Smart Farming</span>
+        </div>
+    </div>
+
+    <nav class="navigation">
+
+        <button class="nav-item active" data-page="dashboard-page">
+            <span>📊</span>
+            <span data-i18n="dashboard">ಡ್ಯಾಶ್‌ಬೋರ್ಡ್</span>
+        </button>
+
+        <button class="nav-item" data-page="weather-page">
+            <span>🌦️</span>
+            <span data-i18n="weather">ಹವಾಮಾನ</span>
+        </button>
+
+        <button class="nav-item" data-page="crop-page">
+            <span>🔬</span>
+            <span data-i18n="cropDoctor">ಬೆಳೆ ವೈದ್ಯ</span>
+        </button>
+
+        <button class="nav-item" data-page="guide-page">
+            <span>📚</span>
+            <span data-i18n="farmingGuide">ಕೃಷಿ ಮಾರ್ಗದರ್ಶಿ</span>
+        </button>
+
+        <button class="nav-item" data-page="assistant-page">
+            <span>🤖</span>
+            <span data-i18n="assistant">ಶುಂಠಿ ಸಹಾಯಕ</span>
+        </button>
+
+        <button class="nav-item" data-page="market-page">
+            <span>🏪</span>
+            <span data-i18n="market">ನೇರ ಮಾರುಕಟ್ಟೆ</span>
+        </button>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+        <div class="iot-mini">
+            <span class="live-dot"></span>
+
+            <div>
+                <strong data-i18n="iotConnected">IoT Simulation</strong>
+                <small data-i18n="sensorActive">Sensor Active</small>
+            </div>
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main-content">
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <div class="mobile-menu" id="mobileMenu">
+            ☰
+        </div>
+
+        <!-- LANGUAGE SWITCH -->
+
+        <div class="language-switch">
+
+            <button id="lang-kn" class="language-btn active">
+                ಕನ್ನಡ
+            </button>
+
+            <button id="lang-en" class="language-btn">
+                English
+            </button>
+
+        </div>
+
+        <div class="topbar-right">
+
+            <div class="location-status">
+                📍 <span id="currentLocation">India</span>
+            </div>
+
+            <div class="farmer-profile">
+                <div class="avatar">👨‍🌾</div>
+
+                <div>
+                    <strong data-i18n="farmer">ರೈತ</strong>
+                    <small data-i18n="smartFarmer">ಸ್ಮಾರ್ಟ್ ಕೃಷಿ</small>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================================================= -->
+    <!-- DASHBOARD -->
+    <!-- ================================================= -->
+
+    <section id="dashboard-page" class="page active-page">
+
+        <div class="page-header">
+
+            <div>
+                <span class="eyebrow">🌱 GingerMitra</span>
+
+                <h1 data-i18n="welcomeTitle">
+                    ನಿಮ್ಮ ಶುಂಠಿ ಕೃಷಿಗೆ ಸ್ವಾಗತ
+                </h1>
+
+                <p data-i18n="welcomeSubtitle">
+                    ನಿಮ್ಮ ಬೆಳೆ, ಮಣ್ಣು ಮತ್ತು ಹವಾಮಾನವನ್ನು ಒಂದೇ ಸ್ಥಳದಲ್ಲಿ ನಿರ್ವಹಿಸಿ.
+                </p>
+            </div>
+
+            <div class="date-box">
+                <span id="currentDate"></span>
+            </div>
+
+        </div>
+
+
+        <!-- HERO -->
+
+        <div class="hero-card">
+
+            <div class="hero-content">
+
+                <span class="hero-tag" data-i18n="smartAgriculture">
+                    🌾 Smart Agriculture
+                </span>
+
+                <h2 data-i18n="heroTitle">
+                    ಉತ್ತಮ ಮಣ್ಣು → ಉತ್ತಮ ಶುಂಠಿ → ಉತ್ತಮ ಆದಾಯ
+                </h2>
+
+                <p data-i18n="heroText">
+                    IoT sensor data, weather information ಮತ್ತು ಕೃಷಿ ಮಾರ್ಗದರ್ಶನವನ್ನು ಬಳಸಿ ನಿಮ್ಮ ಶುಂಠಿ ಬೆಳೆಯನ್ನು ನಿರ್ವಹಿಸಿ.
+                </p>
+
+                <button class="primary-btn" data-page-target="guide-page">
+                    <span data-i18n="viewGuide">ಮಾರ್ಗದರ್ಶಿ ನೋಡಿ</span>
+                    →
+                </button>
+
+            </div>
+
+            <div class="hero-visual">
+                🌱
+            </div>
+
+        </div>
+
+
+        <!-- QUICK CARDS -->
+
+        <div class="section-title">
+            <h2 data-i18n="quickAccess">ತ್ವರಿತ ಪ್ರವೇಶ</h2>
+        </div>
+
+        <div class="quick-grid">
+
+            <div class="quick-card weather-card" data-page-target="weather-page">
+
+                <div class="quick-icon">🌦️</div>
+
+                <div>
+                    <span data-i18n="tomorrowWeather">ನಾಳೆಯ ಹವಾಮಾನ</span>
+                    <strong id="dashWeatherCondition">--</strong>
+                    <small>
+                        <span id="dashTemp">--</span>°C
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="quick-card doctor-card" data-page-target="crop-page">
+
+                <div class="quick-icon">🔬</div>
+
+                <div>
+                    <span data-i18n="cropDoctor">ಬೆಳೆ ವೈದ್ಯ</span>
+                    <strong data-i18n="checkCrop">ಬೆಳೆ ಪರಿಶೀಲಿಸಿ</strong>
+                    <small data-i18n="uploadLeaf">ಚಿತ್ರ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ</small>
+                </div>
+
+            </div>
+
+
+            <div class="quick-card ai-card" data-page-target="assistant-page">
+
+                <div class="quick-icon">🤖</div>
+
+                <div>
+                    <span data-i18n="aiAssistant">AI ಸಹಾಯಕ</span>
+                    <strong data-i18n="askQuestion">ಪ್ರಶ್ನೆ ಕೇಳಿ</strong>
+                    <small data-i18n="gingerAdvice">ಶುಂಠಿ ಕೃಷಿ ಸಲಹೆ</small>
+                </div>
+
+            </div>
+
+
+            <div class="quick-card market-card" data-page-target="market-page">
+
+                <div class="quick-icon">🏪</div>
+
+                <div>
+                    <span data-i18n="directMarket">ನೇರ ಮಾರುಕಟ್ಟೆ</span>
+                    <strong data-i18n="sellDirect">ನೇರವಾಗಿ ಮಾರಾಟ ಮಾಡಿ</strong>
+                    <small data-i18n="noMiddleman">ಮಧ್ಯವರ್ತಿ ಇಲ್ಲ</small>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- IOT DASHBOARD -->
+        <!-- ================================================= -->
+
+        <div class="section-title">
+
+            <div>
+                <h2 data-i18n="iotDashboard">
+                    IoT ಕೃಷಿ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್
+                </h2>
+
+                <p data-i18n="iotDescription">
+                    ನಿಮ್ಮ sensor data ಅನ್ನು ಇಲ್ಲಿ ನೋಡಬಹುದು.
+                </p>
+            </div>
+
+            <div class="sensor-live">
+                <span class="live-dot"></span>
+                <span data-i18n="liveSensor">Live Sensor</span>
+            </div>
+
+        </div>
+
+
+        <div class="iot-grid">
+
+            <!-- NPK -->
+
+            <div class="dashboard-card npk-card">
+
+                <div class="card-head">
+
+                    <div>
+                        <span class="eyebrow">🌱 NPK</span>
+
+                        <h3 data-i18n="soilNutrition">
+                            ಮಣ್ಣಿನ ಪೋಷಕಾಂಶ
+                        </h3>
+                    </div>
+
+                    <span class="sensor-badge">
+                        IoT
+                    </span>
+
+                </div>
+
+
+                <div class="npk-values">
+
+                    <div class="nutrient">
+
+                        <div class="nutrient-top">
+                            <span>N</span>
+                            <strong id="nValue">--</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div id="nBar"></div>
+                        </div>
+
+                        <small id="nStatus">--</small>
+
+                    </div>
+
+
+                    <div class="nutrient">
+
+                        <div class="nutrient-top">
+                            <span>P</span>
+                            <strong id="pValue">--</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div id="pBar"></div>
+                        </div>
+
+                        <small id="pStatus">--</small>
+
+                    </div>
+
+
+                    <div class="nutrient">
+
+                        <div class="nutrient-top">
+                            <span>K</span>
+                            <strong id="kValue">--</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div id="kBar"></div>
+                        </div>
+
+                        <small id="kStatus">--</small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="npk-summary">
+
+                    <div>
+                        <span data-i18n="average">ಸರಾಸರಿ</span>
+                        <strong id="npkAverage">--</strong>
+                    </div>
+
+                    <div>
+                        <span data-i18n="soilHealth">ಮಣ್ಣಿನ ಆರೋಗ್ಯ</span>
+                        <strong id="npkHealth">--</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="sensor-time">
+                    🛰️
+                    <span data-i18n="sensorReading">
+                        IoT sensor reading
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- SOIL MOISTURE -->
+
+            <div class="dashboard-card moisture-card">
+
+                <div class="card-head">
+
+                    <div>
+                        <span class="eyebrow">💧 IoT Sensor</span>
+
+                        <h3 data-i18n="soilMoisture">
+                            ಮಣ್ಣಿನ ತೇವಾಂಶ
+                        </h3>
+                    </div>
+
+                    <span class="sensor-badge">
+                        LIVE
+                    </span>
+
+                </div>
+
+
+                <div class="moisture-main">
+
+                    <div class="moisture-number">
+
+                        <strong id="moistureValue">--</strong>
+
+                        <span>%</span>
+
+                    </div>
+
+                    <div class="moisture-status" id="moistureStatus">
+                        --
+                    </div>
+
+                </div>
+
+
+                <div class="moisture-progress">
+
+                    <div id="moistureBar"></div>
+
+                </div>
+
+
+                <p id="moistureAdvice">
+                    --
+                </p>
+
+
+                <div class="sensor-footer">
+
+                    <div>
+                        🛰️
+                        <span id="moistureSensorStatus">
+                            Sensor Connected
+                        </span>
+                    </div>
+
+                    <div>
+                        <span data-i18n="updated">
+                            Updated
+                        </span>:
+                        <span id="sensorUpdated">--</span>
+                    </div>
+
+                </div>
+
+
+                <button class="secondary-btn" id="refreshSensorBtn">
+                    🔄
+                    <span data-i18n="refreshSensor">
+                        Refresh Sensor
+                    </span>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================================================= -->
+        <!-- MOTOR CONTROL -->
+        <!-- ================================================= -->
+
+        <div class="section-title">
+
+            <div>
+                <h2 data-i18n="motorControl">
+                    ಮೋಟಾರ್ ನಿಯಂತ್ರಣ
+                </h2>
+
+                <p data-i18n="motorDescription">
+                    ಮಣ್ಣಿನ ತೇವಾಂಶದ ಆಧಾರದ ಮೇಲೆ ಸ್ವಯಂ ನಿಯಂತ್ರಣ.
+                </p>
+            </div>
+
+            <span class="auto-badge">
+                ● <span data-i18n="autoMode">ಸ್ವಯಂ ಮೋಡ್</span>
+            </span>
+
+        </div>
+
+
+        <div class="motor-card">
+
+            <div class="motor-main">
+
+                <div class="motor-status-icon" id="motorStatusIcon">
+                    ⏹️
+                </div>
+
+                <div>
+
+                    <span class="eyebrow" data-i18n="currentMotorStatus">
+                        ಪ್ರಸ್ತುತ ಮೋಟಾರ್ ಸ್ಥಿತಿ
+                    </span>
+
+                    <h2 id="motorStatus">
+                        OFF
+                    </h2>
+
+                    <p id="motorMessage">
+                        --
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="motor-rules">
+
+                <div class="motor-rule">
+
+                    <span class="rule-value">
+                        &lt; 30%
+                    </span>
+
+                    <strong data-i18n="motorOnRule">
+                        ಮೋಟಾರ್ ON
+                    </strong>
+
+                </div>
+
+
+                <div class="motor-rule">
+
+                    <span class="rule-value">
+                        30–50%
+                    </span>
+
+                    <strong data-i18n="motorHoldRule">
+                        ಹಿಂದಿನ ಸ್ಥಿತಿ
+                    </strong>
+
+                </div>
+
+
+                <div class="motor-rule">
+
+                    <span class="rule-value">
+                        &gt; 50%
+                    </span>
+
+                    <strong data-i18n="motorOffRule">
+                        ಮೋಟಾರ್ OFF
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="motor-bottom">
+
+                <span>
+                    🕐
+                    <span data-i18n="lastMotorUpdate">
+                        ಕೊನೆಯ update
+                    </span>:
+                    <strong id="motorUpdated">--</strong>
+                </span>
+
+                <span class="motor-note" data-i18n="motorNote">
+                    30–50% ನಡುವೆ ಹಿಂದಿನ ಸ್ಥಿತಿ ಉಳಿಯುತ್ತದೆ.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- SENSOR TEST -->
+
+        <div class="test-card">
+
+            <div>
+                <strong data-i18n="sensorTesting">
+                    IoT Sensor Testing
+                </strong>
+
+                <p data-i18n="sensorTestingText">
+                    Hardware ಇಲ್ಲದಿದ್ದರೆ ಈ buttons ಬಳಸಿ sensor ಮತ್ತು motor logic ಪರೀಕ್ಷಿಸಿ.
+                </p>
+            </div>
+
+            <div class="test-buttons">
+
+                <button id="testDryBtn" class="test-btn dry">
+                    💧 25%
+                </button>
+
+                <button id="testNormalBtn" class="test-btn normal">
+                    💧 40%
+                </button>
+
+                <button id="testWetBtn" class="test-btn wet">
+                    💧 60%
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- WEATHER PAGE -->
+    <!-- ================================================= -->
+
+    <section id="weather-page" class="page">
+
+        <div class="page-header">
+
+            <div>
+
+                <span class="eyebrow">🌦️ GingerMitra</span>
+
+                <h1 data-i18n="weatherTitle">
+                    ಹವಾಮಾನ ಮುನ್ಸೂಚನೆ
+                </h1>
+
+                <p data-i18n="weatherSubtitle">
+                    ನಿಮ್ಮ ಹೊಲದ ಹವಾಮಾನವನ್ನು ಪರಿಶೀಲಿಸಿ.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="weather-search">
+
+            <input
+                type="text"
+                id="weatherCity"
+                placeholder="ನಗರ / ಸ್ಥಳದ ಹೆಸರು"
+            >
+
+            <button class="primary-btn" id="getWeatherBtn">
+                🔍
+                <span data-i18n="getForecast">
+                    ಮುನ್ಸೂಚನೆ ಪಡೆಯಿರಿ
+                </span>
+            </button>
+
+            <button class="secondary-btn" id="locationBtn">
+                📍
+                <span data-i18n="myLocation">
+                    ನನ್ನ ಸ್ಥಳ
+                </span>
+            </button>
+
+        </div>
+
+
+        <div id="weatherLoading" class="loading hidden">
+            ⏳
+            <span data-i18n="loadingWeather">
+                ಹವಾಮಾನ ಮಾಹಿತಿ ಪಡೆಯಲಾಗುತ್ತಿದೆ...
+            </span>
+        </div>
+
+
+        <div id="weatherResult" class="weather-result hidden">
+
+            <div class="weather-main-card">
+
+                <div>
+
+                    <span id="weatherLocation">
+                        --
+                    </span>
+
+                    <h2 id="weatherCondition">
+                        --
+                    </h2>
+
+                    <div class="big-temperature">
+
+                        <span id="weatherMax">
+                            --
+                        </span>
+
+                        <small>°C</small>
+
+                    </div>
+
+                </div>
+
+                <div class="weather-icon-large">
+                    🌤️
+                </div>
+
+            </div>
+
+
+            <div class="weather-stats">
+
+                <div class="weather-stat">
+
+                    <span>🌡️</span>
+
+                    <div>
+                        <small data-i18n="maximum">
+                            ಗರಿಷ್ಠ
+                        </small>
+
+                        <strong>
+                            <span id="weatherMax2">--</span>°C
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="weather-stat">
+
+                    <span>🌧️</span>
+
+                    <div>
+                        <small data-i18n="rainChance">
+                            ಮಳೆಯ ಸಾಧ್ಯತೆ
+                        </small>
+
+                        <strong>
+                            <span id="weatherRain">--</span>%
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="weather-stat">
+
+                    <span>💧</span>
+
+                    <div>
+                        <small data-i18n="rainfall">
+                            ಮಳೆ ಪ್ರಮಾಣ
+                        </small>
+
+                        <strong>
+                            <span id="weatherRainfall">--</span> mm
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="weather-stat">
+
+                    <span>💨</span>
+
+                    <div>
+                        <small data-i18n="wind">
+                            ಗಾಳಿ
+                        </small>
+
+                        <strong>
+                            <span id="weatherWind">--</span> km/h
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="advice-card">
+
+                <div class="advice-icon">
+                    🌾
+                </div>
+
+                <div>
+
+                    <h3 data-i18n="sprayingAdvice">
+                        ಸಿಂಪಡಣೆ ಸಲಹೆ
+                    </h3>
+
+                    <p id="sprayAdvice">
+                        --
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button class="secondary-btn" id="speakWeather">
+                🔊
+                <span data-i18n="listen">
+                    ಕೇಳಿ
+                </span>
+            </button>
+
+        </div>
+
+
+        <!-- Manual Temperature -->
+
+        <div class="manual-weather">
+
+            <h3 data-i18n="manualWeather">
+                ತಾಪಮಾನ ಪರೀಕ್ಷೆ
+            </h3>
+
+            <p data-i18n="manualWeatherText">
+                ನಿಮ್ಮ ಪ್ರದೇಶದ ತಾಪಮಾನವನ್ನು ನಮೂದಿಸಿ.
+            </p>
+
+            <div class="manual-input">
+
+                <input
+                    type="number"
+                    id="manualTemp"
+                    placeholder="Temperature °C"
+                >
+
+                <button class="primary-btn" id="checkTempBtn">
+                    <span data-i18n="check">
+                        ಪರಿಶೀಲಿಸಿ
+                    </span>
+                </button>
+
+            </div>
+
+            <p id="manualTempResult"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- CROP DOCTOR -->
+    <!-- ================================================= -->
+
+    <section id="crop-page" class="page">
+
+        <div class="page-header">
+
+            <div>
+
+                <span class="eyebrow">🔬 AI Crop Doctor</span>
+
+                <h1 data-i18n="cropDoctorTitle">
+                    ಶುಂಠಿ ಬೆಳೆ ವೈದ್ಯ
+                </h1>
+
+                <p data-i18n="cropDoctorSubtitle">
+                    ನಿಮ್ಮ ಶುಂಠಿ ಎಲೆಯ ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="crop-doctor-card">
+
+            <div class="upload-area">
+
+                <div class="upload-icon">
+                    📷
+                </div>
+
+                <h3 data-i18n="uploadCrop">
+                    ಬೆಳೆ ಚಿತ್ರ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ
+                </h3>
+
+                <p data-i18n="uploadCropText">
+                    JPG ಅಥವಾ PNG ಚಿತ್ರವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.
+                </p>
+
+                <label for="cropImage" class="upload-btn">
+                    📁
+                    <span data-i18n="chooseImage">
+                        ಚಿತ್ರ ಆಯ್ಕೆ ಮಾಡಿ
+                    </span>
+                </label>
+
+                <input
+                    type="file"
+                    id="cropImage"
+                    accept="image/*"
+                    hidden
+                >
+
+            </div>
+
+
+            <div class="crop-preview-box">
+
+                <img
+                    id="cropPreview"
+                    src=""
+                    alt="Crop Preview"
+                    class="hidden"
+                >
+
+                <div id="cropPlaceholder">
+                    🌱
+                    <span data-i18n="preview">
+                        Preview ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ
+                    </span>
+                </div>
+
+            </div>
+
+
+            <button
+                id="analyzeCropBtn"
+                class="primary-btn analyze-btn"
+            >
+                🔍
+                <span data-i18n="analyzeCrop">
+                    ಬೆಳೆ ಪರಿಶೀಲಿಸಿ
+                </span>
+            </button>
+
+
+            <div id="cropResult" class="crop-result hidden">
+
+                <h3 data-i18n="analysisResult">
+                    ವಿಶ್ಲೇಷಣೆ
+                </h3>
+
+                <p id="cropResultText">
+                    --
+                </p>
+
+                <div class="demo-warning">
+                    ⚠️
+                    <span data-i18n="cropDemoWarning">
+                        ಇದು frontend demo. ನಿಜವಾದ AI disease detection ಗೆ ML model ಅಥವಾ API ಅಗತ್ಯವಿದೆ.
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- FARMING GUIDE -->
+    <!-- ================================================= -->
+
+    <section id="guide-page" class="page">
+
+        <div class="page-header">
+
+            <div>
+
+                <span class="eyebrow">📚 Ginger Knowledge</span>
+
+                <h1 data-i18n="guideTitle">
+                    ಶುಂಠಿ ಕೃಷಿ ಮಾರ್ಗದರ್ಶಿ
+                </h1>
+
+                <p data-i18n="guideSubtitle">
+                    ಉತ್ತಮ ಇಳುವರಿಗಾಗಿ ಹಂತ ಹಂತದ ಮಾರ್ಗದರ್ಶನ.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="guide-grid">
+
+
+            <article class="guide-card">
+
+                <div class="guide-icon">🌱</div>
+
+                <h3 data-i18n="soilPreparation">
+                    ಮಣ್ಣಿನ ತಯಾರಿ
+                </h3>
+
+                <p data-i18n="soilPreparationText">
+                    ನೀರು ನಿಲ್ಲದ, ಉತ್ತಮ drainage ಇರುವ ಮಣ್ಣನ್ನು ಆಯ್ಕೆ ಮಾಡಿ. ಸಾವಯವ ಗೊಬ್ಬರ ಸೇರಿಸಿ ಮಣ್ಣನ್ನು ಸಡಿಲಗೊಳಿಸಿ.
+                </p>
+
+                <button class="listen-btn" data-speak-key="soilPreparationText">
+                    🔊 <span data-i18n="listen">ಕೇಳಿ</span>
+                </button>
+
+            </article>
+
+
+            <article class="guide-card">
+
+                <div class="guide-icon">🌿</div>
+
+                <h3 data-i18n="planting">
+                    ನೆಡುವಿಕೆ
+                </h3>
+
+                <p data-i18n="plantingText">
+                    ಆರೋಗ್ಯಕರ seed rhizomes ಆಯ್ಕೆ ಮಾಡಿ. ಸೂಕ್ತ ಅಂತರದಲ್ಲಿ ನೆಡಿ ಮತ್ತು ಉತ್ತಮ drainage ಕಾಪಾಡಿ.
+                </p>
+
+                <button class="listen-btn" data-speak-key="plantingText">
+                    🔊 <span data-i18n="listen">ಕೇಳಿ</span>
+                </button>
+
+            </article>
+
+
+            <article class="guide-card">
+
+                <div class="guide-icon">💧</div>
+
+                <h3 data-i18n="irrigation">
+                    ನೀರಾವರಿ
+                </h3>
+
+                <p data-i18n="irrigationText">
+                    ಮಣ್ಣಿನ ತೇವಾಂಶವನ್ನು ಗಮನಿಸಿ ನೀರು ನೀಡಿ. ನೀರು ಹೆಚ್ಚು ನಿಲ್ಲುವುದನ್ನು ತಪ್ಪಿಸಿ.
+                </p>
+
+                <button class="listen-btn" data-speak-key="irrigationText">
+                    🔊 <span data-i18n="listen">ಕೇಳಿ</span>
+                </button>
+
+            </article>
+
+
+            <article class="guide-card">
+
+                <div class="guide-icon">🧪</div>
+
+                <h3 data-i18n="fertilizer">
+                    ಗೊಬ್ಬರ ಮತ್ತು NPK
+                </h3>
+
+                <p data-i18n="fertilizerText">
+                    ಮಣ್ಣಿನ ಪರೀಕ್ಷೆಯ ಆಧಾರದ ಮೇಲೆ ಪೋಷಕಾಂಶಗಳನ್ನು ನಿರ್ವಹಿಸಿ. ಅಗತ್ಯವಿದ್ದಾಗ NPK ಬಳಸಿ.
+                </p>
+
+                <button class="listen-btn" data-speak-key="fertilizerText">
+                    🔊 <span data-i18n="listen">ಕೇಳಿ</span>
+                </button>
+
+            </article>
+
+
+            <article class="guide-card">
+
+                <div class="guide-icon">🐛</div>
+
+                <h3 data-i18n="disease">
+                    ರೋಗ ಮತ್ತು ಕೀಟ
+                </h3>
+
+                <p data-i18n="diseaseText">
+                    ಎಲೆಗಳ ಬಣ್ಣ, ಕಲೆಗಳು ಮತ್ತು rhizome condition ಅನ್ನು ನಿಯಮಿತವಾಗಿ ಪರಿಶೀಲಿಸಿ.
+                </p>
+
+                <button class="listen-btn" data-speak-key="diseaseText">
+                    🔊 <span data-i18n="listen">ಕೇಳಿ</span>
+                </button>
+
+            </article>
+
+
+            <article class="guide-card">
+
+                <div class="guide-icon">🧺</div>
+
+                <h3 data-i18n="harvesting">
+                    ಕೊಯ್ಲು
+                </h3>
+
+                <p data-i18n="harvestingText">
+                    ಬೆಳೆ maturity ತಲುಪಿದಾಗ ಕೊಯ್ಲು ಮಾಡಿ. ಮಣ್ಣಿನಿಂದ rhizomes ಅನ್ನು ಎಚ್ಚರಿಕೆಯಿಂದ ತೆಗೆದುಕೊಳ್ಳಿ.
+                </p>
+
+                <button class="listen-btn" data-speak-key="harvestingText">
+                    🔊 <span data-i18n="listen">ಕೇಳಿ</span>
+                </button>
+
+            </article>
+
+
+            <article class="guide-card">
+
+                <div class="guide-icon">📦</div>
+
+                <h3 data-i18n="storage">
+                    ಸಂಗ್ರಹಣೆ
+                </h3>
+
+                <p data-i18n="storageText">
+                    ಹಾನಿಗೊಳಗಾದ rhizomes ಬೇರ್ಪಡಿಸಿ. ಸ್ವಚ್ಛ, ಗಾಳಿ ಹರಿಯುವ ಮತ್ತು ಸೂಕ್ತ ಸ್ಥಳದಲ್ಲಿ ಸಂಗ್ರಹಿಸಿ.
+                </p>
+
+                <button class="listen-btn" data-speak-key="storageText">
+                    🔊 <span data-i18n="listen">ಕೇಳಿ</span>
+                </button>
+
+            </article>
+
+
+            <article class="guide-card">
+
+                <div class="guide-icon">💰</div>
+
+                <h3 data-i18n="marketGuide">
+                    ಮಾರುಕಟ್ಟೆ
+                </h3>
+
+                <p data-i18n="marketGuideText">
+                    ಗುಣಮಟ್ಟ, ಪ್ರಮಾಣ ಮತ್ತು ಮಾರುಕಟ್ಟೆ ಬೆಲೆಯನ್ನು ಪರಿಶೀಲಿಸಿ. ಸಾಧ್ಯವಾದಲ್ಲಿ ನೇರ ಖರೀದಿದಾರರನ್ನು ಸಂಪರ್ಕಿಸಿ.
+                </p>
+
+                <button class="listen-btn" data-speak-key="marketGuideText">
+                    🔊 <span data-i18n="listen">ಕೇಳಿ</span>
+                </button>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- ASSISTANT -->
+    <!-- ================================================= -->
+
+    <section id="assistant-page" class="page">
+
+        <div class="page-header">
+
+            <div>
+
+                <span class="eyebrow">🤖 AI Assistant</span>
+
+                <h1 data-i18n="assistantTitle">
+                    ಶುಂಠಿ ಸಹಾಯಕ
+                </h1>
+
+                <p data-i18n="assistantSubtitle">
+                    ಶುಂಠಿ ಕೃಷಿ ಕುರಿತು ನಿಮ್ಮ ಪ್ರಶ್ನೆಗಳನ್ನು ಕೇಳಿ.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="assistant-container">
+
+            <div class="chat-header">
+
+                <div class="assistant-avatar">
+                    🤖
+                </div>
+
+                <div>
+                    <strong>GingerMitra AI</strong>
+                    <small>
+                        <span class="live-dot"></span>
+                        <span data-i18n="online">Online</span>
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div id="chatMessages" class="chat-messages">
+
+                <div class="message bot">
+
+                    <div class="message-avatar">
+                        🤖
+                    </div>
+
+                    <div class="message-content">
+                        <p data-i18n="assistantWelcome">
+                            ನಮಸ್ಕಾರ! ನಾನು GingerMitra. ಶುಂಠಿ ಕೃಷಿ, ನೀರಾವರಿ, NPK, ರೋಗ ಮತ್ತು ಹವಾಮಾನ ಕುರಿತು ಕೇಳಿ.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="quick-questions">
+
+                <button data-question="weather">
+                    🌦️ <span data-i18n="quickWeather">ನಾಳೆ ಹವಾಮಾನ ಹೇಗಿದೆ?</span>
+                </button>
+
+                <button data-question="water">
+                    💧 <span data-i18n="quickWater">ಯಾವಾಗ ನೀರು ಕೊಡಬೇಕು?</span>
+                </button>
+
+                <button data-question="npk">
+                    🧪 <span data-i18n="quickNpk">NPK ಬಗ್ಗೆ ಹೇಳಿ</span>
+                </button>
+
+                <button data-question="disease">
+                    🐛 <span data-i18n="quickDisease">ರೋಗದ ಲಕ್ಷಣಗಳು?</span>
+                </button>
+
+            </div>
+
+
+            <div class="chat-input">
+
+                <button id="voiceAssistant" class="voice-btn">
+                    🎤
+                </button>
+
+                <input
+                    type="text"
+                    id="assistantInput"
+                    placeholder="ನಿಮ್ಮ ಪ್ರಶ್ನೆ..."
+                >
+
+                <button id="sendAssistant" class="send-btn">
+                    ➤
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- MARKET -->
+    <!-- ================================================= -->
+
+    <section id="market-page" class="page">
+
+        <div class="page-header">
+
+            <div>
+
+                <span class="eyebrow">🏪 Direct Market</span>
+
+                <h1 data-i18n="marketTitle">
+                    ನೇರ ಮಾರುಕಟ್ಟೆ
+                </h1>
+
+                <p data-i18n="marketSubtitle">
+                    ಮಧ್ಯವರ್ತಿಗಳಿಲ್ಲದೆ ಖರೀದಿದಾರರನ್ನು ಸಂಪರ್ಕಿಸಿ.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="market-notice">
+
+            <span>🤝</span>
+
+            <div>
+                <strong data-i18n="directSelling">
+                    ನೇರ ಮಾರಾಟ
+                </strong>
+
+                <p data-i18n="directSellingText">
+                    ಕೆಳಗಿನವುಗಳು demonstration companies. ನಿಜವಾದ buyer verification ಅಗತ್ಯವಿದೆ.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="market-grid">
+
+            <div class="market-card">
+
+                <div class="company-logo">
+                    🏪
+                </div>
+
+                <h3>Ginger Fresh Traders</h3>
+
+                <span>📍 Karnataka</span>
+
+                <p data-i18n="buyerDemo">
+                    Ginger buyer — Demo profile
+                </p>
+
+                <button class="contact-btn">
+                    📞
+                    <span data-i18n="contact">
+                        ಸಂಪರ್ಕಿಸಿ
+                    </span>
+                </button>
+
+            </div>
+
+
+            <div class="market-card">
+
+                <div class="company-logo">
+                    🌿
+                </div>
+
+                <h3>Green Spice Foods</h3>
+
+                <span>📍 Karnataka</span>
+
+                <p data-i18n="buyerDemo">
+                    Ginger buyer — Demo profile
+                </p>
+
+                <button class="contact-btn">
+                    📞
+                    <span data-i18n="contact">
+                        ಸಂಪರ್ಕಿಸಿ
+                    </span>
+                </button>
+
+            </div>
+
+
+            <div class="market-card">
+
+                <div class="company-logo">
+                    🌱
+                </div>
+
+                <h3>Natural Spice Hub</h3>
+
+                <span>📍 South India</span>
+
+                <p data-i18n="buyerDemo">
+                    Ginger buyer — Demo profile
+                </p>
+
+                <button class="contact-btn">
+                    📞
+                    <span data-i18n="contact">
+                        ಸಂಪರ್ಕಿಸಿ
+                    </span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TOAST -->
+
+    <div id="toast" class="toast">
+        <span id="toastMessage"></span>
+    </div>
+
+
+</main>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
